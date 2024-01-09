@@ -3,10 +3,10 @@ const toggleNav = () => {
     document.body.dataset.nav = document.body.dataset.nav === "true" ? "false" : "true";
     var img = document.getElementById("arrow");
     if (document.body.dataset.nav === "true") {
-        img.src = "Assets/uparro.svg";
+        img.src = "Assets/arro.svg";
     }
     else {
-        img.src = "Assets/arro.svg";
+        img.src = "Assets/uparro.svg";
     } 
   }
 
@@ -61,30 +61,18 @@ const enhance = id => {
         text = element.innerText.split("");
   
   element.innerText = "";
-  
   text.forEach((value, index) => {
     const outer = document.createElement("span");
-    
     outer.className = "outer";
-    
     const inner = document.createElement("span");
-    
     inner.className = "inner";
-    
     inner.style.animationDelay = `${rand(-5000, 0)}ms`;
-    
     const letter = document.createElement("span");
-    
     letter.className = "letter";
-    
     letter.innerText = value;
-    
     letter.style.animationDelay = `${index * 1000 }ms`;
-    
     inner.appendChild(letter);    
-    
     outer.appendChild(inner);    
-    
     element.appendChild(outer);
   });
 }
