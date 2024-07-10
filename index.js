@@ -10,6 +10,8 @@ const toggleNav = () => {
     } 
   }
 
+
+
 /* -- Glow effect -- */
 
 const blob = document.getElementById("blob");
@@ -26,7 +28,6 @@ window.onpointermove = event => {
 /* -- Text effect -- */
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
 let interval = null;
 
 document.getElementById("navheader").onmouseover = event => {  
