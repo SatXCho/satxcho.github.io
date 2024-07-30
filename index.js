@@ -1,17 +1,4 @@
 
-const toggleNav = () => {
-    document.body.dataset.nav = document.body.dataset.nav === "true" ? "false" : "true";
-    var img = document.getElementById("arrow");
-    if (document.body.dataset.nav === "true") {
-        img.src = "Assets/arro.svg";
-    }
-    else {
-        img.src = "Assets/uparro.svg";
-    } 
-  }
-
-
-
 /* -- Glow effect -- */
 
 const blob = document.getElementById("blob");
@@ -26,34 +13,37 @@ window.onpointermove = event => {
 }
 
 /* -- Text effect -- */
-
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let interval = null;
 
-document.getElementById("navheader").onmouseover = event => {  
-  let iteration = 0;
-  
-  clearInterval(interval);
-  
-  interval = setInterval(() => {
-    event.target.innerText = event.target.innerText
-      .split("")
-      .map((letter, index) => {
-        if(index < iteration) {
-          return event.target.dataset.value[index];
-        }
-      
-        return letters[Math.floor(Math.random() * 26)]
-      })
-      .join("");
-    
-    if(iteration >= event.target.dataset.value.length){ 
-      clearInterval(interval);
-    }
-    
-    iteration += 1 / 3;
-  }, 30);
-}
+document.querySelectorAll("#navheader h1, #navheader h2").forEach((element) => {
+  let interval = null;
+
+  element.onmouseover = (event) => {
+    let iteration = 0;
+    const originalText = event.target.dataset.value;
+
+    clearInterval(interval);
+
+    interval = setInterval(() => {
+      event.target.innerText = originalText
+        .split("")
+        .map((letter, index) => {
+          if (index < iteration) {
+            return originalText[index];
+          }
+
+          return letters[Math.floor(Math.random() * 26)];
+        })
+        .join("");
+
+      if (iteration >= originalText.length) {
+        clearInterval(interval);
+      }
+
+      iteration += 1 / 3;
+    }, 30);
+  };
+});
 
 const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
@@ -77,5 +67,26 @@ const enhance = id => {
     element.appendChild(outer);
   });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const fancyElement = document.querySelector('.fancy');
+  const outerElements = fancyElement.querySelectorAll('.outer');
+
+  fancyElement.addEventListener('mouseover', () => {
+    outerElements.forEach((element, index) => {
+      const translateX = Math.random() * 50 - 25; // Random value between -100% and 100%
+      const translateY = Math.random() * 100 - 50; // Random value between -100% and 100%
+      const rotate = Math.random() * 20 - 10; // Random value between -10deg and 10deg
+      element.style.transform = `translate(${translateX}%, ${translateY}%) rotate(${rotate}deg)`;
+    });
+  });
+
+  fancyElement.addEventListener('mouseout', () => {
+    outerElements.forEach((element) => {
+      element.style.transform = '';
+    });
+  });
+});
+
 
 enhance("github-link");
