@@ -1,4 +1,3 @@
-
 /* -- Glow effect -- */
 
 const blob = document.getElementById("blob");
@@ -47,9 +46,9 @@ document.querySelectorAll("#navheader h1, #navheader h2").forEach((element) => {
 
 const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-const enhance = id => {
-  const element = document.getElementById(id),
-        text = element.innerText.split("");
+const enhance = element => {
+  const text = element.innerText.split("");
+  console.log(text);
   
   element.innerText = "";
   text.forEach((value, index) => {
@@ -68,25 +67,4 @@ const enhance = id => {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const fancyElement = document.querySelector('.fancy');
-  const outerElements = fancyElement.querySelectorAll('.outer');
-
-  fancyElement.addEventListener('mouseover', () => {
-    outerElements.forEach((element, index) => {
-      const translateX = Math.random() * 50 - 25; // Random value between -100% and 100%
-      const translateY = Math.random() * 100 - 50; // Random value between -100% and 100%
-      const rotate = Math.random() * 20 - 10; // Random value between -10deg and 10deg
-      element.style.transform = `translate(${translateX}%, ${translateY}%) rotate(${rotate}deg)`;
-    });
-  });
-
-  fancyElement.addEventListener('mouseout', () => {
-    outerElements.forEach((element) => {
-      element.style.transform = '';
-    });
-  });
-});
-
-
-enhance("github-link");
+document.querySelectorAll("line1").forEach(enhance);
