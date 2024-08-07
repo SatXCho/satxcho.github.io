@@ -201,7 +201,7 @@ body {
   transition: opacity 250ms ease;
   text-align: left;
   font-size: 0.9rem;
-  margin: 0 auto 0 0; 
+  margin: 0 auto 0 auto; 
 }
 
 .word {
