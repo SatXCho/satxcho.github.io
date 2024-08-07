@@ -153,7 +153,7 @@ body {
 }
 
 .line1 {
-  font-size: clamp(3rem, 4vw, 2rem);
+  font-size: clamp(3rem, 2vw, 2rem);
   max-width: 460px;
   font-weight: bold;
   z-index: 100;
@@ -204,12 +204,15 @@ body {
   margin: 0 auto 0 auto; 
 }
 
-.word {
-  color: white;
+#blog {
   text-align: center;
   font-family: "Source Code Pro", monospace;
   margin: 0;
   transition: opacity 250ms ease;
+}
+#blog a {
+  color: white;
+  font-size: clamp(1.5rem, 2vw, 1.5rem);
 }
 
 .terminals {
@@ -240,31 +243,6 @@ body {
   z-index: 100;
 }
 
-.fancy span {
-  display: inline-block;
-}
-
-.fancy > .outer {
-  transition: transform 350ms ease;
-}
-
-.fancy:hover > .outer {
-  transition-duration: 800ms;
-}
-
-.fancy:hover > .outer > .inner {
-  animation: float 5s ease infinite;
-}
-
-.fancy:hover > .outer > .inner > .letter {
-  background: linear-gradient(to right, var(--blue), var(--green), var(--blue));
-  background-size: 1000%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: background-pan 150s linear infinite;
-}
-
 @keyframes pan {
   0% { background-position: 0% 0%; }
   100% { background-position: 100% 0%; }
@@ -292,7 +270,12 @@ a {
 
 @media (max-width: 768px){
   
-
+  #navheader h1 {
+    font-size: 1.5rem;
+  }
+  #navheader h2 {
+    font-size: 1rem;
+  }
   #profile-pic {
     max-width: 300px;
   }
